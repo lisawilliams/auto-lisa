@@ -92,3 +92,17 @@ Return value is: nil
    16: scraper
 (byebug) url
 ```
+
+## Accessing HTML and CSS elements of parsed pages via Nokogiri
+
+```
+(byebug) parsed_page.css('div.ListMod-items-item')
+[]
+(byebug) parsed_page.css('div.PromoLede-title')
+[]
+(byebug) parsed_page.css('div.ListMod')
+```
+
+So, we can use `nokogiri` to inquire into the parsed page. For instance. we can use the .css function to point at a specific CSS class. 
+
+Notably, it looks like `nokogiri` will look at the top-level class but not the subclasses. Like for `div.ListMod-items-item` it returns a null set `[]`. But for `div.ListMod` it returns a ton of text...but assigning that to a variable like `listItem` and then doing `listItem.count` returns a value of 1. Interesting. 
