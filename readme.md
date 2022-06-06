@@ -46,4 +46,49 @@ lisawilliams@Lisas-MacBook-Air auto-lisa %
 
 Looks like `bundle install` ran succesfully to me. 
 
-## 
+## Successful initial test
+
+Setting up scraper.rb and running it produces the following results: 
+
+```
+lisawilliams@Lisas-MacBook-Air auto-lisa % ruby scraper.rb
+[DEPRECATION] HTTParty will no longer override `response#nil?`. This functionality will be removed in future versions. Please, add explicit check `response.body.nil? || response.body.empty?`. For more info refer to: https://github.com/jnunemaker/httparty/issues/568
+/Users/lisawilliams/.asdf/installs/ruby/3.1.2/lib/ruby/gems/3.1.0/gems/nokogiri-1.13.6-arm64-darwin/lib/nokogiri/html4/document.rb:214:in `parse'
+Return value is: nil
+
+[7, 16] in /Users/lisawilliams/code/auto-lisa/scraper.rb
+    7: # build methods
+    8: 
+    9: def scraper
+   10: 	url = "URL I AM USING"
+   11: 	unparsed_page = HTTParty.get(url)
+   12: 	parsed_page = Nokogiri::HTML(unparsed_page)
+   13: 	byebug
+=> 14: end
+   15: 
+   16: scraper
+(byebug) 
+```
+
+There is a way to clear that `[DEPRECATION` error documented here: [HTTParty Deprecation/nil, Stack Overflow](https://stackoverflow.com/questions/61590268/deprecation-httparty-will-no-longer-override-responsenil-what-does-this-de)
+
+Changing `parsed_page = Nokogiri::HTML(unparsed_page)` to `parsed_page = Nokogiri::HTML(unparsed_page.body)` and then running `ruby scraper.rb` produces the following: 
+
+
+```
+lisawilliams@Lisas-MacBook-Air auto-lisa % ruby scraper.rb
+Return value is: nil
+
+[7, 16] in /Users/lisawilliams/code/auto-lisa/scraper.rb
+    7: # build methods
+    8: 
+    9: def scraper
+   10: 	url = "URL I AM USING"
+   11: 	unparsed_page = HTTParty.get(url)
+   12: 	parsed_page = Nokogiri::HTML(unparsed_page.body)
+   13: 	byebug
+=> 14: end
+   15: 
+   16: scraper
+(byebug) url
+```
