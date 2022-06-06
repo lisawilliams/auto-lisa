@@ -6,7 +6,7 @@ Trying this on a newly installed computer -- doing this on my old laptop didn't 
 
 ## Details of my development box setup
 
-Details of my setup can be found [here](https://github.com/lisawilliams/setup). 
+Details of my setup can be found in my setup guide.  
 
 I am using a new Mac laptop using MacOS Monterey 12.4 and `ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [arm64-darwin21]` installed using `asdf` using the instructions found in the [Mac Install Guide: Ruby](https://mac.install.guide/ruby/). 
 
