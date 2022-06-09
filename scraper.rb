@@ -12,7 +12,7 @@ def scraper
 	parsed_page = Nokogiri::HTML(unparsed_page.body)
 
 	# variable to store all the job listings on the page we grabbed above
-	job_listings = parsed_page.css('div.card-title') #25 jobs
+	job_listings = parsed_page.css('div.bti-job-search-results') #25 jobs
 
 	#now iterate through the individual listings
 	job_listings.each do |job_listing|
