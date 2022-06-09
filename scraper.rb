@@ -20,7 +20,8 @@ def scraper
 		job = {
 			title: job_listing.css("div.card-title").text,
 			company: job_listing.css("div.card-subtitle").text,
-			location: job_listing.css("div.card-text").text,
+			location: job_listing.css("p.card-text").text,
+			url: job_listing.css("div.data-job-path")
 		}
 		
 	 	byebug
